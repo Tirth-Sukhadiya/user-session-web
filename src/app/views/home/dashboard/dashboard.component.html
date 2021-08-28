@@ -1,0 +1,32 @@
+<div style="
+margin-top: 60px;
+">
+    <div>
+        <mat-card class="mat-elevation-z4">
+            <mat-card-content>
+                <p>
+                    Welcome back, {{userDetail?.name || 'No User'}}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="content">
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let cardsDetail of cardsSource">
+                <mat-card class="mat-elevation-z4">
+                    <mat-card-header>
+                        <mat-card-title>{{cardsDetail.title}}</mat-card-title>
+                    </mat-card-header>
+                    <hr class="hr-margin" />
+                    <img mat-card-image src="./../assets/sq-5.jpg">
+                    <mat-card-content>
+                        <p>{{cardsDetail.description}}</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <div class="show-more">
+            <button mat-raised-button color="primary" *ngIf="showMoreVisible" (click)="showMore()">Show more...</button>
+        </div>
+    </div>
+</div>

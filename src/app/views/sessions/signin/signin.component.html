@@ -1,0 +1,37 @@
+<div class="page-wrap height-100 black">
+  <div class="session-form-hold">
+    <mat-progress-bar mode="determinate" class="session-progress"></mat-progress-bar>
+    <mat-card style="text-align: center; min-height: 94vh;">
+      <mat-card-content>
+        <div class="text-center pt-8 pb-16">
+          <img width="60px" src="assets/user.jpg" alt="">
+          <p class="text-muted m-0">Sign in to your account</p>
+        </div>
+
+        <p *ngIf="errorMsg" class="text-center"><small style="color:red">{{errorMsg}}</small></p>
+
+        <form [formGroup]="signinForm" (ngSubmit)="signin()">
+          <div>
+            <mat-form-field>
+              <input matInput name="username" formControlName="username" placeholder="Username">
+            </mat-form-field>
+            <small style="color:red"
+              *ngIf="signinForm.controls['username'].hasError('required') && signinForm.controls['username'].touched">
+              Username is required </small>
+          </div>
+
+          <div class="">
+            <mat-form-field>
+              <input type="password" name="password" matInput formControlName="password" placeholder="Password">
+            </mat-form-field>
+            <small style="color:red"
+              *ngIf="signinForm.controls['password'].hasError('required') && signinForm.controls['password'].touched">
+              Password is required </small>
+          </div>
+
+          <button mat-raised-button class="mat-primary full-width mb-1" [disabled]="signinForm.invalid">Sign in</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
